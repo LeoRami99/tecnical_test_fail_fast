@@ -41,6 +41,11 @@ class Role(models.Model):
         verbose_name=_("Compañía"),
         help_text=_("Compañía a la que pertenece este rol.")
     )
+    role_code = models.CharField(
+        max_length=50,
+        verbose_name=_("Código del Rol"),
+        help_text=_("Código único para identificar el rol dentro de la compañía.")
+    )
 
     role_name = models.CharField(
         verbose_name=_("Nombre del Rol"),

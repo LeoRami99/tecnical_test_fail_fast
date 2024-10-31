@@ -39,7 +39,7 @@ class PermiUser(models.Model):
     usercompany = models.ForeignKey(
         UserCompany,
         on_delete=models.PROTECT,
-        related_name='user_permissions',
+        related_name='permi_user_permissions',
         verbose_name=_("Usuario por Compañía"),
         help_text=_("Relación usuario-compañía a la que se asigna el permiso.")
     )
@@ -47,7 +47,7 @@ class PermiUser(models.Model):
     permission = models.ForeignKey(
         Permission,
         on_delete=models.PROTECT,
-        related_name='permission_users',
+        related_name='user_permissions',
         verbose_name=_("Permiso"),
         help_text=_("Permiso asignado al usuario.")
     )
@@ -55,7 +55,7 @@ class PermiUser(models.Model):
     entitycatalog = models.ForeignKey(
         EntityCatalog,
         on_delete=models.PROTECT,
-        related_name='entity_permissions',
+        related_name='permi_user_entity_permissions',
         verbose_name=_("Entidad"),
         help_text=_("Entidad sobre la que se aplica el permiso.")
     )
@@ -68,4 +68,4 @@ class PermiUser(models.Model):
     class Meta:
         verbose_name = _("Permiso de Usuario")
         verbose_name_plural = _("Permisos de Usuario")
-        unique_together = ['usercompany', 'permission', 'entitycatal']
+        unique_together = ['usercompany', 'permission', 'entitycatalog']

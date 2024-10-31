@@ -59,12 +59,17 @@ class PermiRole(models.Model):
         help_text=_("Entidad sobre la que se aplica el permiso.")
     )
 
-
-
     perol_include = models.BooleanField(
         default=True,
         verbose_name=_("Incluir Permiso"),
         help_text=_("Indica si el permiso se incluye (True) o se excluye (False) para el rol.")
+    )
+    perol_record = models.ForeignKey(
+        'PermiRoleRecord',
+        on_delete=models.PROTECT,
+        related_name='perol_permissions',
+        verbose_name=_("Registro de Permiso de Rol"),
+        help_text=_("Registro de permiso de rol.")
     )
 
     class Meta:
