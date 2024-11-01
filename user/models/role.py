@@ -2,6 +2,7 @@ from django.db import models
 from django.utils.translation import gettext_lazy as _
 
 from core.models.company import Company
+from user.models.permission import Permission
 
 class Role(models.Model):
     """
@@ -63,6 +64,14 @@ class Role(models.Model):
         verbose_name=_("Estado del Rol"),
         help_text=_("Indica si el rol está activo (True) o inactivo (False).")
     )
+
+    permissions = models.ManyToManyField(
+        Permission,
+        related_name='role_permissions',
+        verbose_name=_("Permisos"),
+        help_text=_("Permisos asignados a este rol.")
+    )
+
 
     class Meta:
         verbose_name = _("Rol")
