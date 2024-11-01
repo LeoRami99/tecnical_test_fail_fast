@@ -1,6 +1,6 @@
 from rest_framework import viewsets
-from user.models import Permission, Role, PermiUser, PermiRole
-from .serializers import PermissionSerializer, RoleSerializer, PermiUserSerializer, PermiRoleSerializer
+from user.models import Permission, Role, PermiUser, PermiRole, User, UserCompany
+from .serializers import PermissionSerializer, RoleSerializer, PermiUserSerializer, PermiRoleSerializer, UserSerializer,UserCompanySerializer
 
 class PermissionViewSet(viewsets.ModelViewSet):
     queryset = Permission.objects.all()
@@ -17,3 +17,9 @@ class PermiUserViewSet(viewsets.ModelViewSet):
 class PermiRoleViewSet(viewsets.ModelViewSet):
     queryset = PermiRole.objects.all()
     serializer_class = PermiRoleSerializer
+class UserViewSet(viewsets.ModelViewSet):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+class UserCompanyViewSet(viewsets.ModelViewSet):
+    queryset = UserCompany.objects.all()
+    serializer_class = UserCompanySerializer
